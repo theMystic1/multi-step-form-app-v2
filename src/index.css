@@ -656,11 +656,8 @@ label {
   .btn-- {
     width: 100%;
     position: absolute;
-    bottom: -8rem;
+    bottom: -4rem;
     background-color: #fff;
-    /* padding: 1.2rem; */
-    /* width: 40rem; */
-    /* height: 6rem; */
   }
 
   .spn {
