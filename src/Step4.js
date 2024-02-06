@@ -4,13 +4,33 @@ export function Step4({
   onPrevRender,
   selectedAddOns,
   selectedPlan,
-  handleNextStep2,
+  handlePrevStep2,
   isStep4,
-  onNextRender,
+  onNextStep,
+  handleLoading,
 }) {
-  // function handleNextStep5(){
-  //   onNextStep()
-  // }
+  function handleNextStep5() {
+    handleLoading(true);
+    setTimeout(() => {
+      handleLoading(false);
+      onNextStep();
+    }, 2000);
+  }
+
+  function handlePrevStep() {
+    handleLoading(true);
+    setTimeout(() => {
+      handleLoading(false);
+      onPrevRender();
+    }, 2000);
+  }
+  function handlePrevSteptwo() {
+    handleLoading(true);
+    setTimeout(() => {
+      handleLoading(false);
+      handlePrevStep2();
+    }, 2000);
+  }
 
   const totalMonthly =
     selectedPlan.current.monthPrice +
@@ -44,7 +64,7 @@ export function Step4({
               <button
                 className="change-plan"
                 style={{ textDecoration: "underline", cursor: "pointer" }}
-                onClick={handleNextStep2}
+                onClick={handlePrevSteptwo}
               >
                 Change
               </button>
@@ -83,9 +103,9 @@ export function Step4({
       </div>
 
       <Button
-        onPrevRender={onPrevRender}
+        onPrevRender={handlePrevStep}
         isStep4={isStep4}
-        onRender={onNextRender}
+        onRender={handleNextStep5}
       />
     </div>
   );

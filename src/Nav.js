@@ -1,13 +1,14 @@
-export function Nav({ isStep1, isStep2, isStep3, isStep4, isStep5 }) {
+export function Nav({ currentStep }) {
   return (
     <nav className="side-bar">
       <div className="nav-info">
-        <img src="./bg-sidebar-desktop.svg" alt="" className="side-bar-img" />
         <div className="nav-details">
           <div className="step-det">
             {/* <!-- Step 1 Your info Step 2 Select plan Step 3 Add-ons Step 4 Summary --> */}
             <button
-              className={`num_btn btn_num-1 ${isStep1 && "btn__active"} `}
+              className={`num_btn btn_num-1 ${
+                currentStep === 1 && "btn__active"
+              } `}
               data-num="1"
             >
               1
@@ -21,7 +22,9 @@ export function Nav({ isStep1, isStep2, isStep3, isStep4, isStep5 }) {
 
           <div className="step-det">
             <button
-              className={`num_btn btn_num-2 ${isStep2 && "btn__active"}`}
+              className={`num_btn btn_num-2 ${
+                currentStep === 2 && "btn__active"
+              }`}
               data-num="2"
             >
               2
@@ -34,7 +37,11 @@ export function Nav({ isStep1, isStep2, isStep3, isStep4, isStep5 }) {
           </div>
 
           <div className="step-det">
-            <button className={`num_btn btn_num-3 ${isStep3 && "btn__active"}`}>
+            <button
+              className={`num_btn btn_num-3 ${
+                currentStep === 3 && "btn__active"
+              }`}
+            >
               3
             </button>
 
@@ -47,7 +54,7 @@ export function Nav({ isStep1, isStep2, isStep3, isStep4, isStep5 }) {
           <div className="step-det">
             <button
               className={`num_btn btn_num-4 ${
-                isStep4 || (isStep5 && "btn__active")
+                currentStep === 4 || currentStep === 5 ? "btn__active" : ""
               }`}
             >
               4

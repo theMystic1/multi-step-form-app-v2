@@ -3,7 +3,7 @@ import { Button } from "./Button";
 
 // import { Button } from "./Button";
 
-export function Step1({ isStep1, onNextStep }) {
+export function Step1({ currentStep, onNextStep, handleLoading }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -22,7 +22,13 @@ export function Step1({ isStep1, onNextStep }) {
 
     if (!number) setIsOkayNum(false);
 
-    if (name && email && isValidEmail(email) && number) onNextStep();
+    if (name && email && isValidEmail(email) && number) {
+      handleLoading(true);
+      setTimeout(() => {
+        handleLoading(false);
+        onNextStep();
+      }, 2000);
+    }
   }
   function isValidEmail(email) {
     // Regular expression for validating email addresses
@@ -104,7 +110,11 @@ export function Step1({ isStep1, onNextStep }) {
           />
         </div>
       </form>
-      <Button onRender={handleNextRnder} isStep1={isStep1} />
+      <Button
+        onRender={handleNextRnder}
+        // isStep1={isStep1}
+        currentStep={currentStep}
+      />
     </div>
   );
 }

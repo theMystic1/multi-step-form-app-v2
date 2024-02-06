@@ -31,7 +31,12 @@ const plans = [
   },
 ];
 
-export function Step2({ onPrevRender, onNextStep, selectedPlan }) {
+export function Step2({
+  onPrevRender,
+  onNextStep,
+  selectedPlan,
+  handleLoading,
+}) {
   const [isMonth, setIsMonth] = useState(true);
   const [planIsSelected, setPlanIsSelected] = useState(null);
 
@@ -47,6 +52,9 @@ export function Step2({ onPrevRender, onNextStep, selectedPlan }) {
   }
 
   function handleTogglePlan() {
+    if (selectedPlan.current) {
+      setPlanIsSelected(-1);
+    }
     setIsMonth((ism) => !ism);
   }
 
@@ -54,11 +62,23 @@ export function Step2({ onPrevRender, onNextStep, selectedPlan }) {
     // planIsSelected !== null ? onNextStep() : "";
 
     if (planIsSelected !== null) {
-      onNextStep();
+      handleLoading(true);
+      setTimeout(() => {
+        handleLoading(false);
+        onNextStep();
+      }, 2000);
       // selectedPlan.current = { ...plans[planIsSelected] };
       // console.log(selectedPlan);
       // console.log("selected");
     } else return;
+  }
+
+  function handlePrev() {
+    handleLoading(true);
+    setTimeout(() => {
+      handleLoading(false);
+      onPrevRender();
+    }, 2000);
   }
 
   return (
@@ -97,7 +117,7 @@ export function Step2({ onPrevRender, onNextStep, selectedPlan }) {
           </p>
         </div>
       </div>
-      <Button onPrevRender={onPrevRender} onRender={handleStep3} />
+      <Button onPrevRender={handlePrev} onRender={handleStep3} />
     </div>
   );
 }

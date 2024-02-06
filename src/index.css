@@ -10,7 +10,7 @@ html {
 
 :root {
   --Marine-blue: hsl(213, 96%, 18%);
-  --Purplish-blue: hsl(243, 100%, 62%);
+  --Purplish-blue: #473dff;
   --Pastel-blue: hsl(228, 100%, 84%);
   --light-blue: hsl(206, 94%, 87%);
   --strawberry-red: hsl(354, 84%, 57%);
@@ -31,7 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 2.8rem;
   /* margin: auto; */
 }
 
@@ -46,12 +46,20 @@ body {
 .main-section {
   display: flex;
   /* align-items: center; */
-  min-width: 80rem;
+  width: 80rem;
+  position: relative;
   justify-content: space-between;
 }
 
 .side-bar {
   position: relative;
+  background: url("./bg-img/bg-sidebar-desktop.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 30%;
+  height: 55rem;
+  border-radius: 1.2rem;
 }
 
 .nav-info {
@@ -115,8 +123,10 @@ body {
 
 .container_info {
   /* width: 50rem; */
+  width: 60%;
   position: relative;
-  padding: 4rem 9.6rem;
+  padding: 2rem 0;
+  /* padding: 4rem 9.6remma; */
   /* height: 100vh; */
 }
 
@@ -173,6 +183,9 @@ body {
 .spinner {
   margin: 5rem auto;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .spinner img {
   height: 6rem;
@@ -222,6 +235,7 @@ label {
 .spn {
   display: flex;
   justify-content: space-between;
+  width: 40rem;
 }
 
 .error-msg {
@@ -503,3 +517,311 @@ label {
   font-weight: 500;
   color: var(--Purplish-blue);
 }
+
+.spinner {
+  margin: 5rem auto;
+  text-align: center;
+}
+.spinner img {
+  height: 6rem;
+  width: 6rem;
+  fill: var(--orange-primary);
+  animation: rotate 2s infinite linear;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 52em) {
+  .main-section {
+    width: 70rem;
+  }
+  .container_info {
+    padding: 4rem 2rem;
+  }
+
+  .num_btn {
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .step-info {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .h3 {
+    font-size: 1.2rem;
+  }
+  .name-input input,
+  .email-input input,
+  .phone-input input {
+    width: 30rem;
+  }
+  /* .error {
+    margin-left: 20rem;
+  } */
+
+  .spn {
+    width: 30rem;
+  }
+}
+@media (max-width: 45em) {
+  body {
+    background-color: var(--magnolia--color);
+  }
+
+  .section {
+    /* width: 100%; */
+    box-shadow: 0 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.00001);
+  }
+  .main-section {
+    flex-direction: column;
+    align-items: center;
+    width: 60rem;
+    box-shadow: none;
+    background-color: var(--magnolia--color);
+  }
+
+  .side-bar {
+    background: url("./bg-img/bg-sidebar-mobile.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 16rem;
+    padding: 0 2rem;
+    border-radius: 0;
+  }
+
+  .main {
+    padding: 0;
+  }
+
+  /* .nav-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  } */
+
+  .step-det {
+    /* display: block; */
+    flex-direction: column-reverse;
+    justify-content: center;
+    width: 25%;
+  }
+  .step-info {
+    display: none;
+  }
+
+  .nav-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+  }
+
+  .num_btn {
+    z-index: 5000;
+  }
+  .container_info {
+    width: 90%;
+    height: 60rem;
+    padding: 2.8rem;
+    top: -4rem;
+    background-color: #fff;
+    border-radius: 1.2rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+    /* justify-content: center; */
+  }
+
+  body {
+    background-color: var(--magnolia--color);
+  }
+
+  .section {
+    background-color: var(--magnolia--color);
+    padding: 0;
+  }
+  .btn-- {
+    width: 100%;
+    position: absolute;
+    bottom: -8rem;
+    background-color: #fff;
+    /* padding: 1.2rem; */
+    /* width: 40rem; */
+    /* height: 6rem; */
+  }
+
+  .spn {
+    width: 40rem;
+  }
+  .name-input input,
+  .email-input input,
+  .phone-input input {
+    width: 40rem;
+    margin-bottom: 1.2rem;
+  }
+  .plans {
+    flex-direction: column;
+  }
+
+  .plan {
+    height: 10rem;
+    width: 40rem;
+    margin-bottom: 1.2rem;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .plan span {
+    position: static;
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 35.4em) {
+  .main {
+    padding: 0;
+  }
+  .main-section {
+    width: 56rem;
+    display: block;
+  }
+
+  .container_info {
+    margin: 0 auto;
+  }
+
+  .side-bar {
+    /* width: 110%; */
+  }
+
+  .art-service {
+    width: 40rem;
+    height: 8rem;
+  }
+}
+@media (max-width: 32em) {
+  .main-section {
+    width: 52rem;
+  }
+}
+
+@media (max-width: 30em) {
+  .main-section {
+    width: 48rem;
+  }
+}
+@media (max-width: 28em) {
+  .main-section {
+    width: 44rem;
+  }
+
+  .spn {
+    width: 30rem;
+  }
+
+  .name-input input,
+  .email-input input,
+  .phone-input input,
+  .plan,
+  .art-service,
+  .thanks--details,
+  .finish-det {
+    width: 30rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .onl-sp {
+    width: 18rem;
+  }
+}
+@media (max-width: 26em) {
+  .main-section {
+    width: 42rem;
+  }
+
+  .container_info {
+    height: 50rem;
+  }
+
+  .plan-name {
+    margin-bottom: 0.8rem;
+  }
+
+  .promo {
+    margin-top: 0.8rem;
+  }
+
+  .plan {
+    height: 8rem;
+  }
+}
+@media (max-width: 24.4em) {
+  .main-section {
+    width: 39rem;
+  }
+}
+@media (max-width: 21.25em) {
+  .main-section {
+    width: 34rem;
+  }
+
+  .spn {
+    width: 26rem;
+  }
+
+  .name-input input,
+  .email-input input,
+  .phone-input input,
+  .plan,
+  .art-service,
+  .thanks--details,
+  .finish-det {
+    width: 26rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .onl-sp {
+    width: 15rem;
+  }
+
+  .service_head {
+    font-size: 1.2rem;
+  }
+
+  .service_det {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 17.5em) {
+  .main-section {
+    width: 20rem;
+  }
+  .main-section {
+    width: 34rem;
+  }
+  .spn {
+    width: 24rem;
+  }
+
+  .name-input input,
+  .email-input input,
+  .phone-input input,
+  .plan,
+  .art-service,
+  .thanks--details,
+  .finish-det {
+    width: 24rem;
+    margin-bottom: 1.2rem;
+  }
+  .container_info {
+    margin-right: 0;
+  }
+}
+/*
+
+*/

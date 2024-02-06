@@ -32,14 +32,27 @@ export function Step3({
   selectedPlan,
   selectedAddOns,
   onNextStep,
+  handleLoading,
 }) {
   const [activeItems, setActiveItems] = useState([]);
 
   function handleNextRender4() {
     if (selectedAddOns.current !== null) {
-      onNextStep();
+      handleLoading(true);
+      setTimeout(() => {
+        handleLoading(false);
+        onNextStep();
+      }, 2000);
       // console.log("we cool");
     }
+  }
+
+  function handlePrevStep() {
+    handleLoading(true);
+    setTimeout(() => {
+      handleLoading(false);
+      onPrevRender();
+    }, 2000);
   }
 
   function handleActive(index) {
@@ -86,7 +99,7 @@ export function Step3({
         ))}
       </ul>
 
-      <Button onPrevRender={onPrevRender} onRender={handleNextRender4} />
+      <Button onPrevRender={handlePrevStep} onRender={handleNextRender4} />
     </div>
   );
 }

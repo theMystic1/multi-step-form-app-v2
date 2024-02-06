@@ -1,9 +1,9 @@
-export function Button({ isStep1, onRender, onPrevRender, isStep4, isStep5 }) {
+export function Button({ currentStep, onRender, onPrevRender }) {
   return (
     <div className="btn--">
-      {!isStep1 ? <BackBtn onPrevRender={onPrevRender} /> : ""}
+      {currentStep === 1 ? "" : <BackBtn onPrevRender={onPrevRender} />}
 
-      <BtnNext onRender={onRender} isStep4={isStep4} />
+      <BtnNext onRender={onRender} currentStep={currentStep} />
     </div>
   );
 }
@@ -16,14 +16,14 @@ function BackBtn({ onPrevRender }) {
   );
 }
 
-function BtnNext({ onRender, isStep4 }) {
+function BtnNext({ onRender, currentStep }) {
   return (
     <button
       className="next-btn btn "
-      style={isStep4 ? { backgroundColor: "#473dff" } : {}}
+      style={currentStep === 4 ? { backgroundColor: "#473dff" } : {}}
       onClick={onRender}
     >
-      {isStep4 ? "Confirm " : "Next Step"}
+      {currentStep === 4 ? "Confirm " : "Next Step"}
     </button>
   );
 }
