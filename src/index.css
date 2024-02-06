@@ -48,7 +48,7 @@ body {
   /* align-items: center; */
   width: 80rem;
   position: relative;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .side-bar {
@@ -58,6 +58,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   width: 30%;
+  margin-right: 4rem;
   height: 55rem;
   border-radius: 1.2rem;
 }
@@ -146,7 +147,7 @@ body {
 .btn-- {
   /* width: 100%; */
   position: absolute;
-  width: 70%;
+  width: 48rem;
   bottom: 4rem;
   /* right: 0; */
   display: flex;
@@ -359,6 +360,13 @@ label {
 }
 
 /* summary styles */
+
+.finish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .finish-det {
   background-color: var(--magnolia--color);
   padding: 1.2rem;
@@ -417,6 +425,7 @@ label {
   display: flex;
   justify-content: space-between;
   padding: 2rem;
+  width: 40rem;
 }
 
 .total--type {
@@ -466,7 +475,7 @@ label {
   margin-bottom: 2rem;
   border-radius: 0.8rem;
   transition: all 600ms;
-
+  width: 40rem;
   cursor: pointer;
 }
 
@@ -590,6 +599,7 @@ label {
     height: 16rem;
     padding: 0 2rem;
     border-radius: 0;
+    margin-right: 0;
   }
 
   .main {
@@ -658,7 +668,8 @@ label {
   }
   .name-input input,
   .email-input input,
-  .phone-input input {
+  .phone-input input,
+  .finish-det {
     width: 40rem;
     margin-bottom: 1.2rem;
   }
@@ -693,6 +704,7 @@ label {
 
   .container_info {
     margin: 0 auto;
+    height: 50em;
   }
 
   .art-service {
@@ -703,6 +715,10 @@ label {
 @media (max-width: 32em) {
   .main-section {
     width: 52rem;
+  }
+
+  .total__det {
+    width: 30rem;
   }
 }
 
@@ -720,13 +736,16 @@ label {
     width: 30rem;
   }
 
+  .finish-det {
+    width: 32rem;
+  }
+
   .name-input input,
   .email-input input,
   .phone-input input,
   .plan,
   .art-service,
-  .thanks--details,
-  .finish-det {
+  .thanks--details {
     width: 30rem;
     margin-bottom: 1.2rem;
   }
