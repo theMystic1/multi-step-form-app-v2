@@ -84,6 +84,7 @@ export default function App() {
                 selectedAddOns,
                 handleLoading,
                 handlePrevStep2,
+                currentStep,
               }}
             />
           )}

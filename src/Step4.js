@@ -5,7 +5,7 @@ export function Step4({
   selectedAddOns,
   selectedPlan,
   handlePrevStep2,
-  isStep4,
+  currentStep,
   onNextStep,
   handleLoading,
 }) {
@@ -104,7 +104,8 @@ export function Step4({
 
       <Button
         onPrevRender={handlePrevStep}
-        isStep4={isStep4}
+        // isStep4={isStep4}
+        currentStep={currentStep}
         onRender={handleNextStep5}
       />
     </div>
