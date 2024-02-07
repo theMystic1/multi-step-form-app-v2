@@ -13,24 +13,25 @@ export default function App() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const selectedPlan = useRef({});
-  const selectedAddOns = useRef({});
+  const selectedAddOns = useRef([]);
 
-  const handleLoading = (loading) => {
+  function handleLoading(loading) {
     setIsLoading(loading);
-  };
+  }
 
-  const handleNextStep = () => {
+  function handleNextStep() {
     setCurrentStep((prevStep) => prevStep + 1);
-  };
+  }
 
-  const handlePrevStep = () => {
+  function handlePrevStep() {
     setCurrentStep((prevStep) => prevStep - 1);
-  };
+  }
 
-  const handlePrevStep2 = () => {
+  function handlePrevStep2() {
     setCurrentStep((prevStep) => prevStep - 2);
-  };
-
+    selectedPlan.current = {};
+    selectedAddOns.current = [];
+  }
   return (
     <main className="main">
       <section className="section section_1" id="section__1">

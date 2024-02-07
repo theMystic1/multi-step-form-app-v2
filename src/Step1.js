@@ -18,7 +18,9 @@ export function Step1({ currentStep, onNextStep, handleLoading }) {
     e.preventDefault();
     !name ? setIsOkayName(false) : setIsOkayName(true);
     if (!email) setIsOkayEmail(false);
-    !isValidEmail || !email ? setIsOkayEmail(false) : setIsOkayEmail(true);
+    !isValidEmail(email) || !email
+      ? setIsOkayEmail(false)
+      : setIsOkayEmail(true);
 
     if (!number) setIsOkayNum(false);
 
@@ -39,11 +41,11 @@ export function Step1({ currentStep, onNextStep, handleLoading }) {
   function handleName(e) {
     setName(() => e.target.value);
 
-    name.length > 2 ? setIsOkayName(true) : setIsOkayName(false);
+    name.trim() || name.length > 2 ? setIsOkayName(true) : setIsOkayName(false);
   }
   function handleEmail(e) {
     setEmail(() => e.target.value);
-    email.length < 4 ? setIsOkayEmail(false) : setIsOkayEmail(true);
+    !email.trim() ? setIsOkayEmail(false) : setIsOkayEmail(true);
   }
   function handleNumber(e) {
     setNumber(() => e.target.value);
@@ -77,12 +79,7 @@ export function Step1({ currentStep, onNextStep, handleLoading }) {
         <div className="name-input">
           <label name="email">
             <span className="spn">
-              Email Address{" "}
-              {!isOkayEmail || !isValidEmail(email) ? (
-                <Error> Invalid Email </Error>
-              ) : (
-                ""
-              )}
+              Email Address {!isOkayEmail ? <Error> Invalid Email </Error> : ""}
             </span>
           </label>
           <input

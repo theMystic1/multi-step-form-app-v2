@@ -52,9 +52,7 @@ export function Step2({
   }
 
   function handleTogglePlan() {
-    if (selectedPlan.current) {
-      setPlanIsSelected(-1);
-    }
+    if (planIsSelected > -1) handlePlSelected(null);
     setIsMonth((ism) => !ism);
   }
 

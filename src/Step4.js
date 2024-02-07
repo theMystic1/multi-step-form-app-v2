@@ -21,6 +21,8 @@ export function Step4({
     handleLoading(true);
     setTimeout(() => {
       handleLoading(false);
+      selectedAddOns.current = [];
+
       onPrevRender();
     }, 2000);
   }
@@ -35,12 +37,13 @@ export function Step4({
   const totalMonthly =
     selectedPlan.current.monthPrice +
     selectedAddOns.current
-      .map((addns) => addns.monthPlanPrice)
+      ?.map((addns) => addns.monthPlanPrice)
       .reduce((acc, cur) => acc + cur, 0);
+
   const totalYearly =
-    selectedPlan.current.yearPrice +
+    selectedPlan.current?.yearPrice +
     selectedAddOns.current
-      .map((addns) => addns.yearPlanPrice)
+      ?.map((addns) => addns.yearPlanPrice)
       .reduce((acc, cur) => acc + cur, 0);
 
   return (
@@ -78,20 +81,23 @@ export function Step4({
           </div>
 
           <ul className="selected__services">
-            {selectedAddOns.current.map((addon, i) => (
-              <SelectedServicesList
-                key={i}
-                serviceHead={addon.serviceHead}
-                monthPrice={addon.monthPlanPrice}
-                yearPrice={addon.yearPlanPrice}
-                selectedPlan={selectedPlan}
-              />
-            ))}
+            {selectedAddOns &&
+              selectedAddOns.current?.map((addon, i) => (
+                <SelectedServicesList
+                  key={i}
+                  serviceHead={addon.serviceHead}
+                  monthPrice={addon.monthPlanPrice}
+                  yearPrice={addon.yearPlanPrice}
+                  selectedPlan={selectedPlan}
+                />
+              ))}
           </ul>
         </div>
 
         <div className="total__det">
-          <p className="total--type">Total (per month)</p>
+          <p className="total--type">
+            Total (per {selectedPlan.current.planType})
+          </p>
 
           <p className="tot-price">
             +$

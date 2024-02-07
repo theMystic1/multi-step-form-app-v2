@@ -37,7 +37,7 @@ export function Step3({
   const [activeItems, setActiveItems] = useState([]);
 
   function handleNextRender4() {
-    if (selectedAddOns.current !== null) {
+    if (selectedAddOns.current) {
       handleLoading(true);
       setTimeout(() => {
         handleLoading(false);
@@ -60,16 +60,15 @@ export function Step3({
     if (indexInActiveItems !== -1) {
       // If active, remove it from activeItems
       setActiveItems(activeItems.filter((itemIndex) => itemIndex !== index));
-      // selectedAddOns.current = [activeItems?.map((_, i) => services[i])];
-      // console.log(index);
     } else {
       // If not active, add it to activeItems
       setActiveItems([...activeItems, index]);
+      // selectedAddOns.current = [...activeItems, index]?.map(
+      //   (_, i) => services[i]
+      // );
       selectedAddOns.current = [...activeItems, index].map(
-        (_, i) => services[i]
+        (ma) => services[ma]
       );
-      // console.log(selectedAddOns.current);
-      // const selected = activeItems?.map((_, i) => services[i]);
     }
   }
   // console.log(selectedAddOns.current);
@@ -93,7 +92,7 @@ export function Step3({
             key={service.serviceHead}
             selectedPlan={selectedPlan}
             activeItems={activeItems}
-            onActive={handleActive}
+            onActive={() => handleActive(index)}
             index={index}
           />
         ))}
